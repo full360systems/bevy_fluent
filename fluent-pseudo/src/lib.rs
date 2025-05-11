@@ -30,7 +30,7 @@ pub fn transform_dom(s: &str, flipped: bool, elongate: bool, with_markers: bool)
     }
 
     // XML entities (&#x202a;) and XML tags.
-    let re_excluded =
+    #[allow(static_mut_refs)] let re_excluded =
         unsafe { RE_EXCLUDED.get_or_insert_with(|| Regex::new(r"&[#\w]+;|<\s*.+?\s*>").unwrap()) };
 
     let mut result = Cow::from(s);
@@ -65,7 +65,7 @@ pub fn transform_dom(s: &str, flipped: bool, elongate: bool, with_markers: bool)
 }
 
 pub fn transform(s: &str, flipped: bool, elongate: bool) -> Cow<str> {
-    let re_az = unsafe { RE_AZ.get_or_insert_with(|| Regex::new(r"[a-zA-Z]").unwrap()) };
+    #[allow(static_mut_refs)] let re_az = unsafe { RE_AZ.get_or_insert_with(|| Regex::new(r"[a-zA-Z]").unwrap()) };
 
     let (small_map, caps_map) = if flipped {
         (FLIPPED_SMALL_MAP, FLIPPED_CAPS_MAP)
