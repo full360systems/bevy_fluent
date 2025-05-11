@@ -10,7 +10,7 @@ use fluent_bundle::resolver::ResolverError;
 use fluent_bundle::FluentArgs;
 use fluent_bundle::FluentError;
 use fluent_bundle::{FluentBundle, FluentResource, FluentValue};
-use rand::distributions::Alphanumeric;
+use rand::distr::Alphanumeric;
 use rand::{thread_rng, Rng};
 use unic_langid::LanguageIdentifier;
 
